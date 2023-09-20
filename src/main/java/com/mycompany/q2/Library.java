@@ -13,9 +13,13 @@ public class Library
 {
     
     private ArrayList<item> book_list;
+    private List<borrower> borrowers;
+     private List<item> borroweditems;
 
     public Library() {
         this.book_list = new ArrayList<>();
+        this.borrowers = new ArrayList<>();
+        this.borroweditems = new ArrayList<>();
     }
     
     public void addBook(item i) 
@@ -126,7 +130,7 @@ public void edit_in_arr(int i) throws ParseException
                 b.setYear(y);
                 System.out.println(" popularity: ");
                 int p = s.nextInt();
-                b.setPopularity(p);
+                b.setpopularity(p);
                 System.out.println(  " Price: " );
                 int pr = s.nextInt();
                 b.setPrice(pr);
@@ -146,7 +150,7 @@ public void edit_in_arr(int i) throws ParseException
                 n.setPublishYear(y);
                 System.out.println(" popularity: ");
                 int p = s.nextInt();
-                n.setPopularity(p);
+                n.setpopularity(p);
                 
                 System.out.println(  " Company: " );
                 s.nextLine();
@@ -181,7 +185,7 @@ public void edit_in_arr(int i) throws ParseException
                 System.out.println("Enter popularity: ");
                 int p = s.nextInt();
                 s.nextLine(); // Consume newline after reading the integer
-                m.setPopularity(p);
+                m.setpopularity(p);
 
                 System.out.println("Enter Price: ");
                 int pr = s.nextInt();
@@ -243,4 +247,84 @@ public void display_by_id(int i) //viewbyid
             
         }
     }
-}
+    
+    public void borrowItem(borrower b, int id)
+    {
+//        for(item i : b.getBorrowedItems())
+//        {
+//            if(i.getId() == id)
+//            {
+//                System.out.println("Item is already borrowed by " + b.getName());
+//                return false;
+//            }
+//        }
+        
+        for (item item : book_list)
+        {
+            if (item.getId() == id)
+            {
+                if (item.isBorrowed() == false && !borroweditems.contains(item))
+                {
+                   // System.out.println("borrow list me agaye");
+                     borrowers.add(b);
+                     borroweditems.add(item);
+                     item.markAsBorrowed();
+                     item.increasePopularityCount();
+                }
+                else
+                {
+                    System.out.println("Item is already borrowed by " + b.getName());
+                }
+            }
+        }
+        
+    }
+    
+    public void db()
+    {
+        for(borrower b : borrowers)
+        {
+            System.out.println("borrower name: " + b.getName());
+        for(item i : borroweditems)
+        {
+            System.out.println("Detail of item borrowed is: ");
+            i.display();
+            System.out.println(" Cost of the item becomes: " + i.calculatecost());
+        }
+        }
+    }
+    public void hotpicks()
+    {
+       // Assuming you have a List<Item> book_list
+
+        int n = book_list.size();
+        for (int i = 0; i < n - 1; i++)
+        {
+            for (int j = 0; j < n - i - 1; j++)
+            {
+               
+                if (book_list.get(j).getPopularityCount() < book_list.get(j + 1).getPopularityCount()) 
+                {
+                   
+                    item temp = book_list.get(j);
+                    book_list.set(j, book_list.get(j + 1));
+                    book_list.set(j + 1, temp);
+                }
+            }
+        }
+        for(item i:book_list)
+        {
+            i.display();
+        }
+
+    }
+ }
+  
+    
+
+
+   
+       
+    
+    
+
