@@ -49,9 +49,8 @@ public class Library
             int year = s.nextInt();
             System.out.println("Enter Popularity" );
             int popularity = s.nextInt();
-            System.out.println("Enter price" );
-            int price=s.nextInt();
-            Book b = new Book(t,author,year,popularity,price);
+
+            Book b = new Book(t,author,year,popularity);
             book_list.add(b);
         }
 
@@ -108,9 +107,7 @@ public class Library
                     System.out.println(" popularity: ");
                     int p = s.nextInt();
                     b.setpopularity(p);
-                    System.out.println(  " Price: " );
-                    int pr = s.nextInt();
-                    b.setPrice(pr);
+
                     b.display();
                 }
                 if(item instanceof newspaper)
@@ -197,19 +194,7 @@ public class Library
 
     }
 
-    public void db()
-    {
-        for(borrower b : borrowers)
-        {
-            System.out.println("borrower name: " + b.getName());
-            for(item i : borroweditems)
-            {
-                System.out.println("Detail of item borrowed is: ");
-                i.display();
-                System.out.println(" Cost of the item becomes: " + i.calculatecost());
-            }
-        }
-    }
+
     public void hotpicks()
     {
         // Assuming you have a List<Item> book_list

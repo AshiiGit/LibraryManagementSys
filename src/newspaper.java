@@ -42,11 +42,6 @@ public class newspaper extends item {
                             
                             by """ + " "+ company + " Published year is: " + sdf.format(publish_year) );
     }
-    @Override
-    public int calculatecost()
-    {
-        int cost = this.getcost();
-        return cost;
-    }
+
 
 }

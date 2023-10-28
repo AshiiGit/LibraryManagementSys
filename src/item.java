@@ -39,11 +39,7 @@ public class item implements configurration
     {
         System.out.println(" ID: " + id + "\n" + " Title: " + title + " Popularity: " + popularityCount);
     }
-    @Override
-    public int calculatecost()
-    {
-        return cost;
-    }
+
     public int getPopularityCount() {
         return popularityCount;
     }

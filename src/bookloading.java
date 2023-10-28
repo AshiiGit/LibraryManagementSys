@@ -20,26 +20,15 @@ public class bookloading {
                     int year = Integer.parseInt(y);
                     String p = specific[4].trim();
                     int popularity = Integer.parseInt(p);
-                    String pr = specific[5].trim();
-                    int price = Integer.parseInt(pr);
-                    Book book = new Book(title,author,year,popularity,price);
+
+
+                    Book book = new Book(title,author,year,popularity);
                     library.addBook(book);
                 }
 
 
 
-                if ("3".equals(specific[0]))
-                {
-                    String title = specific[1].trim();
-                    String author = specific[2].trim();
-                    String p = specific[3].trim();
-                    int popularity = Integer.parseInt(p);
-                    String y = specific[4].trim();
 
-
-                    newspaper n = new newspaper(title,y,popularity,author);
-                    library.addBook(n);
-                }
 
             }
             s.close();

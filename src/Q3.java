@@ -88,7 +88,7 @@ public class Q3 {
                 }
                 case 7:
                 {
-                    l.db();
+
                     break;
                 }
                 case 8:
